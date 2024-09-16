@@ -14,3 +14,6 @@ Back-end stack:
 - Nestjs
 - Telegraf
 - Mongo
+
+##Support us: 
+- Join to channel https://t.me/tmadevs
