@@ -1,5 +1,6 @@
-# react-nestjs-mongo
-The template for creating Telegram Mini App with React + Typescript, Nestjs and Mongo:
+
+# @tmadevs: react-nestjs-mongo
+We created this template for building Telegram Mini Apps as fast as possible. 
 
 Front-end stack:
 - React
