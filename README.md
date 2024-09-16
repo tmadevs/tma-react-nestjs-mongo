@@ -5,6 +5,7 @@ We created this template for building Telegram Mini Apps as fast as possible.
 Front-end stack:
 - React
 - Typescript
+- @telegram-apps
 - Zustand
 - React-query
 - Tailwind
