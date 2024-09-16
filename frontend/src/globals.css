@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(240 10% 3.9%);
+
+    --card: hsl(0, 0%, 91%);
+    --card-foreground: hsl(240 10% 3.9%);
+
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(240 10% 3.9%);
+
+    --primary: hsl(140 100% 70%);
+    --primary-foreground: hsl(240 5.9% 10%);
+
+    --secondary: hsl(0, 0%, 0%);
+    --secondary-foreground: hsl(0, 0%, 100%);
+
+    --muted: hsl(240 4.8% 95.9%);
+    --muted-foreground: hsl(240 3.8% 46.1%);
+
+    --accent: hsl(240 4.8% 95.9%);
+    --accent-foreground: hsl(240 5.9% 10%);
+
+    --destructive: hsl(0 84.2% 60.2%);
+    --destructive-foreground: hsl(0 0% 98%);
+
+    --telegram: hsl(199, 92%, 56%);
+    --telegram-foreground: hsl(0, 0%, 100%);
+
+    --instagram: linear-gradient(
+      45deg,
+      #f09433 0%,
+      #e6683c 25%,
+      #dc2743 50%,
+      #cc2366 75%,
+      #bc1888 100%
+    );
+    --instagram-foreground: hsl(0, 0%, 100%);
+
+    --border: hsl(240 5.9% 90%);
+    --input: hsl(0, 0%, 8%);
+    --ring: hsl(240 10% 3.9%);
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: hsl(240 10% 3.9%);
+    --foreground: hsl(0 0% 98%);
+
+    --card: hsl(270, 12%, 10%);
+    --card-foreground: hsl(0 0% 98%);
+
+    --popover: hsl(240 10% 3.9%);
+    --popover-foreground: hsl(0 0% 98%);
+
+    --primary: hsl(140 100% 70%);
+    --primary-foreground: hsl(240 5.9% 10%);
+
+    --secondary: hsl(298.05deg 100% 79.68%);
+    --secondary-foreground: hsl(240 5.9% 10%);
+
+    --muted: hsl(240 3.7% 15.9%);
+    --muted-foreground: hsl(240 5% 64.9%);
+
+    --accent: hsl(240 3.7% 15.9%);
+    --accent-foreground: hsl(0 0% 98%);
+
+    --destructive: hsl(14, 100%, 57%);
+    --destructive-foreground: hsl(0 0% 98%);
+
+    --border: hsl(240 3.7% 15.9%);
+    --input: hsl(0, 0%, 54%);
+    --ring: hsl(240 4.9% 83.9%);
+
+    --radius: 0.5rem;
+  }
+
+  /* .twa {
+    --background: var(--tg-theme-bg-color);
+    --foreground: var(--tg-theme-text-color);
+ 
+    --card: var(--tg-theme-section-bg-color);
+    --card-foreground: var(--tg-theme-text-color);
+
+    --popover: var(--tg-theme-section-bg-color);
+    --popover-foreground: var(--tg-theme-text-color);
+  
+    --primary: var(--tg-theme-button-color);
+    --primary-foreground: var(--tg-theme-button-text-color);
+ 
+    --secondary: var(--tg-theme-secondary-bg-color);
+    --secondary-foreground: var(--tg-theme-text-color);
+ 
+    --muted: var(--tg-theme-hint-color);
+    --muted-foreground: var(--tg-theme-hint-color);
+ 
+    --accent: var(--tg-theme-accent-text-color);
+    --accent-foreground: hsl(0 0% 98%);
+ 
+    --destructive: var(--tg-theme-destructive-text-color);
+    --destructive-foreground: hsl(0 0% 98%);
+  } */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  input[type="time"],
+  input[type="date"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  ::selection {
+    background: hsl(191, 100%, 72%);
+    color: hsl(0, 0%, 0%);
+  }
+}

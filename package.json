@@ -1,0 +1,9 @@
+{
+  "name": "@tmadevs/react-nestjs-mongo",
+  "private": true,
+  "version": "0.0.1",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
+}
