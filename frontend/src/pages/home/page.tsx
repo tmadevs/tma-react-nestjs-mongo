@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import Logo from "~/assets/logo.svg";
 import { LanguageSwitcher } from "~/components/languge-switcher";
 import { ThemeSwitcher } from "~/components/theme-switcher";
+import { InviteFriend } from "~/components/invite-friend";
 
 export const MainPage = () => {
   const bb = useBackButton();
@@ -27,6 +28,7 @@ export const MainPage = () => {
             @tmadevs
           </a>
         </p>
+        <InviteFriend className="mt-4" />
       </main>
 
       <footer className="flex justify-center items-center p-4 gap-4">

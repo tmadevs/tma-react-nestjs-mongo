@@ -20,6 +20,7 @@
     "@hookform/resolvers": "^3.3.2",
     "@mapbox/mapbox-sdk": "^0.16.0",
     "@mui/base": "^5.0.0-beta.40",
+    "@radix-ui/react-popover": "^1.1.1",
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-toast": "^1.2.1",
     "@tanstack/react-query": "^5.56.2",
@@ -47,6 +48,7 @@
     "react-window": "^1.8.10",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7",
+    "vaul": "^1.0.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {

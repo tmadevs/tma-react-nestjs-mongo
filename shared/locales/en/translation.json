@@ -1,4 +1,11 @@
 {
   "hello_world": "Hello World",
-  "created_by": "The project created by"
+  "created_by": "The project created by",
+
+  "close": "Close",
+  "referral_button": "Invite a friend",
+  "referral_copy_link": "Copy link",
+  "referral_share": "Share",
+  "referral_invite_text": "Join to the @tmadevs using my referral link",
+  "referral_link_copied": "Referral link copied"
 }
