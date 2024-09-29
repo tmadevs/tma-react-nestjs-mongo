@@ -1,9 +1,10 @@
-import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
+import { Injectable, Logger, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from './entities/user.entity';
 import { Model } from 'mongoose';
 import { InitData } from '../auth/auth.utils';
 import { Transaction } from './entities/transaction.entity';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class UsersService {
@@ -12,6 +13,8 @@ export class UsersService {
   constructor(
     @InjectModel(User.name) public readonly userModel: Model<User>,
     @InjectModel(Transaction.name) private transactionModel: Model<Transaction>,
+    private configService: ConfigService,
+
   ) {}
 
   async addTransaction(user, amount, questId = null, type = 'quest_complete') {
@@ -72,6 +75,63 @@ export class UsersService {
       return user;
     } catch (e) {
       console.error(e);
+    }
+  }
+
+  async addReferral(referrerId: string, referralId: string) {
+    try {
+      const referralBonus = this.configService.get<number>('REFERRAL_BONUS') || 0;
+
+      // Find the referrer by ID
+      const referrer = await this.userModel.findOne({ id: referrerId }).exec();
+      if (!referrer) throw new NotFoundException();
+
+      // Find the referral by ID and ensure it has no referrer yet
+      const referral = await this.userModel
+        .findOne({
+          _id: referralId,
+          referrerId: null,
+          createdAt: {
+            $gte: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
+          },
+        })
+        .exec();
+
+      if (!referral) throw new NotFoundException();
+
+      // Ensure the referrer and referral are not the same user
+      if (referrer.id == referral.id) throw new NotFoundException();
+
+      // Add the referral ID to the referrer's referrals array
+      if (!referrer.referrals) {
+        referrer.referrals = [referralId];
+      } else {
+        referrer.referrals.push(referralId);
+      }
+
+      // Update the referrer's balance atomically and set the referrals array
+      await this.userModel.updateOne(
+        { id: referrerId },
+        {
+          $set: { referrals: referrer.referrals },
+          $inc: { balance: referralBonus }, 
+        },
+      );
+
+      // Update the referral's referrer_id and balance atomically
+      await this.userModel.updateOne(
+        { _id: referralId },
+        {
+          $set: { referrerId },
+          $inc: { balance: referralBonus }, 
+        },
+      );
+
+      // Return the updated referrer
+      return await this.userModel.findOne({ id: referrerId }).exec();
+    } catch (error) {
+      // Abort the transaction in case of error
+      throw error;
     }
   }
 }
