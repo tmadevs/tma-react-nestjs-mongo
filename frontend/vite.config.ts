@@ -30,7 +30,7 @@ const serveLocales = () => ({
 const copyLocales = () => ({
   name: 'copy-locales',
   writeBundle() {
-    const languages = ['en', 'ru', 'ua'];
+    const languages = ['en'];
     languages.forEach(lang => {
       const nsFiles = fs.readdirSync(path.resolve(__dirname, '../shared/locales', lang));
       nsFiles.forEach(nsFile => {

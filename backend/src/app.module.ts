@@ -5,12 +5,7 @@ import { UsersModule } from './users/users.module';
 import { MongoModule } from './mongo.module';
 import { ConfigModule } from './config.module';
 import { AuthModule } from './auth/auth.module';
-import { CategoryModule } from './categories/category.module';
-import { EventModule } from './events/events.module';
-import { PracticeModule } from './practices/practice.module';
-import { ProfessionModule } from './professions/profession.module';
 import { BotModule } from './bot/bot.module';
-import { QuestModule } from './quests/quest.module';
 import { I18nModule, AcceptLanguageResolver, QueryResolver, HeaderResolver } from 'nestjs-i18n';
 import { join } from 'path';
 
@@ -20,13 +15,7 @@ import { join } from 'path';
     ConfigModule,
     MongoModule,
     AuthModule,
-    CategoryModule,
-    EventModule,
-    ProfessionModule,
-    CategoryModule,
-    PracticeModule,
     BotModule,
-    QuestModule,
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       loaderOptions: {

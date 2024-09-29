@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from './entities/user.entity';
 import { Model } from 'mongoose';
@@ -63,5 +63,15 @@ export class UsersService {
     return this.userModel
       .findByIdAndUpdate(userId, updateData, { new: true })
       .exec();
+  }
+
+  async getUserProfile(id: string) {
+    try {
+      const user = await this.userModel.findOne({ id: id }).exec();
+      if (!user) throw new UnauthorizedException();
+      return user;
+    } catch (e) {
+      console.error(e);
+    }
   }
 }

@@ -26,7 +26,7 @@ i18n
       loadPath: "/locales/{{lng}}/{{ns}}.json",
     },
 
-    ns: ["translation", "categories", "professions", "practices"],
+    ns: ["translation"],
     defaultNS: "translation",
 
     detection: {
